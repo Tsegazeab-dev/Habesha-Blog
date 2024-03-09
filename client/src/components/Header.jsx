@@ -3,12 +3,13 @@ import { Button, Navbar, TextInput} from "flowbite-react"
 import {AiOutlineSearch} from "react-icons/ai";
 import { FaMoon } from "react-icons/fa";
 
-// flowbite-react is a ui library buit based on tailwind css for styling
+
 function Header() {
     const path = useLocation().pathname
-    // useLocation().pathname is used to  get the current url of the page. so we can make the navbar links active based on the page rendered.
+    
   return (
     <Navbar className="border-b-2">
+        {/* Logo */}
       <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
@@ -18,6 +19,8 @@ function Header() {
         </span>
         Blog
       </Link>
+
+      {/* search input  */}
       <form>
         <TextInput
           type="text"
@@ -26,7 +29,11 @@ function Header() {
           className="hidden lg:inline"
         />
       </form>
-      {/* we use md:order-2 because after the medium screen size the navbar links should be displayed befor the div below. if we change the position of navbar.collapse instead of using order-2 below the medium screen when hamburger menu clicked the navbar links will be displayed before the div below and that creates a mess  */}
+{/* search button displayed below the large screen size */}
+      <Button className="w-12 h-10 lg:hidden" color="gray" pill>
+        <AiOutlineSearch />
+      </Button>
+   {/* Dark and light mode && signIn buttons */}
       <div className="flex gap-2 md:order-2">
         <Button color="gray" className="w-12 h-10 hidden sm:inline" pill>
           <FaMoon />
@@ -37,6 +44,8 @@ function Header() {
         </Link>
         <Navbar.Toggle />
       </div>
+
+      
 
       {/* Navbar.Toggle is a component for the humberger menu and to toggle the navbar links when it is clicked*/}
 
