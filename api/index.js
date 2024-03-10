@@ -14,6 +14,3 @@ mongoose.connect(
 
 
 app.listen(3000, ()=>console.log("server listening to port 3000"))
-
-// kdSGmaPJexBQO6ch
-// tm-dev
