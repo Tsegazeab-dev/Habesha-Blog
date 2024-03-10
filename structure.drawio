@@ -1,55 +1,120 @@
-<mxfile host="65bd71144e">
-    <diagram id="eZKFXFdzhTwZrDXH5VwZ" name="Page-1">
-        <mxGraphModel dx="381" dy="323" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
-            <root>
-                <mxCell id="0"/>
-                <mxCell id="1" parent="0"/>
-                <mxCell id="7" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="9" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="8" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="2" value="Mern Blog App Detailed structure" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="370" y="20" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="3" value="Server side" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="610" y="150" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="15" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" parent="1" source="8" edge="1" target="16">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="110" y="290" as="targetPoint"/>
-                        <Array as="points"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="8" value="Client Side" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="160" y="150" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="16" value="setup the frontend" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="290" width="200" height="150" as="geometry"/>
-                </mxCell>
-                <mxCell id="18" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Tools&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;create a react app&lt;/li&gt;&lt;ul&gt;&lt;li&gt;vite&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Css framework&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Tailwind css&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="16" vertex="1">
-                    <mxGeometry x="15" y="45" width="185" height="105" as="geometry"/>
-                </mxCell>
-                <mxCell id="19" value="create pages and routes" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="117.5" y="475" width="202.5" height="150" as="geometry"/>
-                </mxCell>
-                <mxCell id="20" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Tools&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;Routing&lt;/li&gt;&lt;ul&gt;&lt;li&gt;react-router-dom&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="19" vertex="1">
-                    <mxGeometry x="7.5" y="35" width="195" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="21" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" parent="1" source="18" target="19" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="22" value="Build Header component" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
-                    <mxGeometry x="113.75" y="680" width="212.5" height="150" as="geometry"/>
-                </mxCell>
-                <mxCell id="23" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Tools&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;UI Library&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Flow bite react&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="22" vertex="1">
-                    <mxGeometry x="3.75" y="40" width="206.25" height="95" as="geometry"/>
-                </mxCell>
-                <mxCell id="24" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" parent="1" source="20" target="22" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-            </root>
-        </mxGraphModel>
-    </diagram>
+<mxfile host="app.diagrams.net" modified="2024-03-10T01:29:11.436Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="24.0.4" etag="Lj1A967cHn6FI1dSkJCu" type="device">
+  <diagram id="eZKFXFdzhTwZrDXH5VwZ" name="Page-1">
+    <mxGraphModel dx="794" dy="446" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="9" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2" value="Mern Blog App Detailed structure" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="370" y="20" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="27" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3" target="25" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="Server side" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="610" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="15" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" parent="1" source="8" target="16" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="290" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="Client Side" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="160" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="setup the frontend" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="120" y="290" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Tools&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;create a react app&lt;/li&gt;&lt;ul&gt;&lt;li&gt;vite&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Css framework&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Tailwind css&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="16" vertex="1">
+          <mxGeometry x="15" y="45" width="185" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="create pages and routes" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="123.75" y="475" width="202.5" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Tools&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;Routing&lt;/li&gt;&lt;ul&gt;&lt;li&gt;react-router-dom&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="19" vertex="1">
+          <mxGeometry x="7.5" y="35" width="195" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="21" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" parent="1" source="18" target="19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="Build Header component" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="122.5" y="680" width="212.5" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Tools&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;UI Library&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Flow bite react&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Icons&lt;/li&gt;&lt;ul&gt;&lt;li&gt;react-icons&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="22" vertex="1">
+          <mxGeometry x="3.75" y="60" width="206.25" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="24" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" parent="1" source="20" target="22" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="34" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.401;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="25" target="28" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="create and run server" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="570" y="290" width="200" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Package&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;Express&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="25" vertex="1">
+          <mxGeometry x="15" y="45" width="165" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="38" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="28" target="35" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="Connect to the database" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="570" y="475" width="250" height="205" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="&lt;div style=&quot;&quot;&gt;Packages&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;driver package&lt;/li&gt;&lt;ul&gt;&lt;li&gt;mongoose&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;secure config data(env)&lt;/li&gt;&lt;ul&gt;&lt;li&gt;dotenv package&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="28" vertex="1">
+          <mxGeometry x="15" y="50" width="225" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="Create User model" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="560" y="760" width="270" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="&lt;div style=&quot;&quot;&gt;Procedures&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;Set schema(rule) for the data&lt;/li&gt;&lt;ul&gt;&lt;li&gt;new mongoose.Schema()&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Create model using the schema&lt;/li&gt;&lt;ul&gt;&lt;li&gt;mongoose.model()&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Export the model&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="35" vertex="1">
+          <mxGeometry x="15" y="40" width="245" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="39" value="Create test Api route&amp;nbsp;" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="557.5" y="1050" width="280" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="&lt;div style=&quot;&quot;&gt;Procedures&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;create routes folder &amp;amp; test route file&lt;/li&gt;&lt;ul&gt;&lt;li&gt;express.Router() to accept the request&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;write a get request handler route&lt;/li&gt;&lt;li&gt;create a controller folder &amp;amp; test controller file for the request handler function&lt;/li&gt;&lt;li&gt;connect to the index.js file using middleware&lt;/li&gt;&lt;li&gt;test the route using postman&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="39" vertex="1">
+          <mxGeometry y="40" width="280" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="41" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="36" target="39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="42" value="Create the signUp Api route&amp;nbsp;" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="557.5" y="1400" width="280" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="43" value="&lt;div style=&quot;&quot;&gt;Procedures&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;create auth route file for authentication routes&lt;/li&gt;&lt;li&gt;write a post request&amp;nbsp; route&lt;/li&gt;&lt;li&gt;create signup controller file for the request handler function&lt;/li&gt;&lt;li&gt;check the user data&amp;nbsp;&lt;/li&gt;&lt;li&gt;hash password &amp;amp; save it to the database&lt;/li&gt;&lt;li&gt;test the routes using api testers(postman, insomnia)&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="42" vertex="1">
+          <mxGeometry y="40" width="280" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="44" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="40" target="42" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="47" value="Prepare Error handler middleware" style="swimlane;whiteSpace=wrap;html=1;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="557.5" y="1730" width="280" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="48" value="&lt;div style=&quot;&quot;&gt;Procedures&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;add a middleware inside index.js&amp;nbsp;&lt;/li&gt;&lt;li&gt;anytime there is an error inside controller pass the error to the middleware using next(err)&lt;/li&gt;&lt;li&gt;make the error handler function dynamic to avoid responding for every errors&lt;/li&gt;&lt;li&gt;create a function for custome errors&lt;/li&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;e.g := invalid credentials&amp;nbsp;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="47" vertex="1">
+          <mxGeometry y="40" width="280" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="52" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.004;entryY=0.324;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="49" target="43" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="49" value="Packages" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="326.25" y="1470" width="175" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="50" value="&lt;div style=&quot;&quot;&gt;Password hashing&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;ul&gt;&lt;li&gt;bcryptjs&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" parent="49" vertex="1">
+          <mxGeometry y="60" width="175" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="53" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="43" target="47" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
 </mxfile>
