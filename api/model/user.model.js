@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 // set a schema(rule) for user model
 
 const userSchema = new  mongoose.Schema({
-    user_name: {
+    username: {
         type: String,
         required: true, // this means that the field is required to be filled out when creating an instance of the User Model
         unique: true // means no same username isnot  allowed in the database
@@ -17,7 +17,7 @@ const userSchema = new  mongoose.Schema({
         type : String,
         require: true
     }
-}, {timeStamp: true})
+}, {timestamps: true})
 
 // timeStamp: true record the create and update time of the data
 
