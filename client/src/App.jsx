@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Project from './pages/Project'
 import Header from './components/Header'
 import Test from './pages/test'
+import SignUp from './pages/SignUp'
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/projects" element={<Project/>} />
       <Route path="/test" element={<Test/>} />
+      <Route path="/signup" element={<SignUp/>} />
     </Routes>
     </BrowserRouter>
   )
