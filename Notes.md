@@ -17,3 +17,29 @@
 
 
 ## Create a server
+
+## Error Handler middleware
+ ```
+  app.use(function (err, req, res, next) {
+     message = err.message || "Internal server error"
+     statusCode = err.statusCode || 500
+     res.status(statusCode).json({
+        success: false,
+        statusCode,
+        message
+     })
+  })
+
+ ```
+ * To make our custom errors delivered using middleware we must give them similar look
+   * `utils folder`  > `errorHandler js file`
+   ```
+    export const customError = (status, message)=>{
+       let error = new Error()
+       error.statusCode = status;
+       error.message = message
+       return error;
+    }
+
+    so we can pass the status and message to the function and it will create an error object with a status code and error message. Therefore we don't need to write error message everytime
+   ```
