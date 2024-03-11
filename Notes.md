@@ -43,3 +43,19 @@
 
     so we can pass the status and message to the function and it will create an error object with a status code and error message. Therefore we don't need to write error message everytime
    ```
+
+## Fetching from the backend server
+ * `fetch("/api/auth/signup")` :- this will fetch from the frontend port means if the frontend port is 3000 it will be `fetch('localhost:3000/api/auth/signup')`
+ * to send the request to the backend port we have to add proxy inside the vite configuration
+  ```
+   server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        secure: false,
+      },
+    },
+  },
+
+  for the requests that starts with /api the base url or the target will be changed to http://localhost:3000
+  ```
