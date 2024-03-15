@@ -30,7 +30,7 @@ function SignUp() {
 
       let data = await response.json()
 
-      if(!data.success){
+      if(data.success === false){
         setErrorMessage(data.message)
         setLoading(false)
         return
@@ -56,7 +56,7 @@ console.log(formData)
             Blog
           </Link>
           <p className="mt-5 text-sm">
-            This is a demo project. You can sign in with your email and password
+            This is a demo project. You can sign up with your username, email and password
             or with Google.
           </p>
         </div>
@@ -107,7 +107,7 @@ console.log(formData)
           </form>
           <div className="flex gap-2 mt-5">
             <p>Already have an account?</p>
-            <Link className="text-blue-400">Sign In</Link>
+            <Link to='/signin'className="text-blue-400">Sign In</Link>
           </div>
           {errorMessage && (
             <Alert className="mt-5" color="failure">

@@ -59,3 +59,10 @@
 
   for the requests that starts with /api the base url or the target will be changed to http://localhost:3000
   ```
+
+
+## Signin api route
+ * when we generate a token if we pass expired date it will expires with the specified time length if not it will be expired when the window is closed
+  ```
+   const token = jwt.sign({payload ...}, secret key, {expiresIn: ...})
+  ```
