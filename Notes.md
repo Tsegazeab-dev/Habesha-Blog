@@ -66,3 +66,87 @@
   ```
    const token = jwt.sign({payload ...}, secret key, {expiresIn: ...})
   ```
+
+# Redux Toolkit
+## Step 1:= install redux toolkit and react redux
+### `npm install @reduxjs/toolkit react-redux`
+## Step 2 := creating empty redux store using configureStore API from redux toolkit and export it to use it in main file to wrap the whole components
+```
+ import {configureStore} from '@reduxjs/toolkit'
+
+ export const store = configureStore({
+   reducer: {}
+ })
+
+```
+## Step 3 := provide the redux store to react
+ ```
+ import {Provider} from 'react-redux'
+ import {store} from 'file where we create the store'
+
+  <Provider store={store}>
+     <App />
+  </Provider>
+ ```
+
+## Step 4 := Create a redux slice using CreateSlice from redux toolkit
+ ```
+  import {createSlice} from "@reduxjs/toolkit";
+  const initialState = {
+   loading : false,
+   error : null,
+   user: null
+  }
+  const userSlice = createSlice({
+   name: 'User',
+   initialState,
+   reducers: {
+      <!-- logic -->
+      signInStart : (state) =>{
+         state.loading = true;
+         state.error = null;
+      },
+      signInSuccess : (state, action) =>{
+         state.loading: false,
+         state.error : null,
+         state.user : action.payload
+      }
+  }})
+
+  export const {signInSuccess, signInStart} = userSlice.actions
+  export default userSlice.reducer
+
+<!-- we export user.reducer cause we use it in the store -->
+ ```
+## Step 5:= add user.reducer to the store reducer
+ ```
+  import userReducer from 'from the slice we created'
+  const store = configureStore({
+   reducer: {
+      user: userReducer
+   }
+  })
+ ```
+
+## Step 6 := to update & use states in our component
+```
+ import{signInStart, signInSuccess} from 'slice we created'
+ import {useDispatch} from 'react-redux'
+
+<!-- update states by dispatching actions -->
+
+<!-- initialize useDispatch -->
+ const dispatch = useDispatch();
+ 
+ <!-- inside our component we dispatch actions -->
+ dispatch(signInStart()) // when we start signing in
+ dispatch(signInSuccess(data))// we access data we pass as an argument as a payload in our slice
+
+ <!-- To use the states -->
+
+ <!-- we use useSelector hook from react-redux -->
+ import {useSelector} from 'react-redux';
+
+ <!-- distracture the states using the name in the slice we created-->
+ const {loading, user, error} = useSelector(state=>state.user)
+```

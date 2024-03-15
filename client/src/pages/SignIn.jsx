@@ -1,26 +1,34 @@
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signInFailure, signInStart, signInSuccess } from "../utils/redux/user/userSlice";
 
 function SignIn() {
   const [formData, setFormData] = useState({});
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  // initialize useDispatch  hook to dispatch actions in the Redux store
+  const dispatch = useDispatch();
+
+  // to use the state values we use useSelector hook & the name of the reducer in our slice
+  const{loading, error: errorMessage} = useSelector(state => state.user);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     // check if the user inputs are all filled
     if (!formData.email || !formData.password) {
-      setErrorMessage("Please fill out all fields");
+      dispatch(signInFailure("Please fill out all fields"));
       return;
     }
     try {
-      setLoading(true);
-      setErrorMessage(null);
+      // dispatch signInStart action before Api request
+      dispatch(signInStart())
+
       // we add the proxy inside vite configuration file to send our request to the backend  server port.
       let response = await fetch("/api/auth/signin", {
         method: "POST",
@@ -29,22 +37,18 @@ function SignIn() {
       });
 
       let data = await response.json();
-      console.log(data)
-
+      
       if (data.success === false) {
-        setErrorMessage(data.message);
-        setLoading(false);
+        dispatch(signInFailure(data.message));
         return;
       }
-      setLoading(false);
+      dispatch(signInSuccess(data))
       navigate('/')
     } catch (error) {
-      setErrorMessage(error.message);
-      setLoading(false);
+      dispatch(signInFailure(error.message))
     }
     
   };
-  console.log(formData)
   return (
     <div className="min-h-screen mt-20">
       <div className="flex p-3 flex-col md:flex-row max-w-3xl mx-auto gap-10 md:items-center">
