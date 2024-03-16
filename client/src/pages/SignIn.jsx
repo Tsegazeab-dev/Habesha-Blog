@@ -12,7 +12,8 @@ function SignIn() {
   const dispatch = useDispatch();
 
   // to use the state values we use useSelector hook & the name of the reducer in our slice
-  const{loading, error: errorMessage} = useSelector(state => state.user);
+  
+  const {loading, error: errorMessage} = useSelector(state => state.persistedReducer.user);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
@@ -90,7 +91,7 @@ function SignIn() {
             <Button
               type="submit"
               gradientDuoTone="tealToLime"
-              disabled={loading}
+              disabled={false}
             >
               {loading ? (
                 <>

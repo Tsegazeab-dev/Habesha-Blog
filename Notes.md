@@ -142,11 +142,73 @@
  dispatch(signInStart()) // when we start signing in
  dispatch(signInSuccess(data))// we access data we pass as an argument as a payload in our slice
 
- <!-- To use the states -->
+ <!-- To extract and use the states from the redux store-->
 
  <!-- we use useSelector hook from react-redux -->
  import {useSelector} from 'react-redux';
 
  <!-- distracture the states using the name in the slice we created-->
  const {loading, user, error} = useSelector(state=>state.user)
+
+// useSelector(state => state.user) essentially selects the user slice of the Redux store state
+
+<!-- if we are using a persisted reducer in the store and we want to extract the states from the store-->
+const {loading, user, error} = useSelector(state=>state.persistedReducer.user)
 ```
+
+# How we can solve the state loss during refresh using redux toolkit?
+ ## Redux Persist
+ ### Rehydrating the redux store using redux persist
+ #### Step 1 := combine multiple reducers in the store into a single reducer function using  `combineReducers` from redux toolkit
+  ```
+  import {combineReducer} from '@reduxjs/toolkit'
+   const rootReducer = combineReducers({
+    user: userReducer,
+    other reducers ...
+    });
+
+  ```
+ #### Step 2 := create a configuration object that defines how the Redux state should be persisted.
+  ```
+  import storage from 'redux-persist/lib/storage'
+  const persistConfig = {
+    key : "root",
+    storage,
+    version: 1
+  };
+
+ ```
+
+#### Step 3 := create a persisted reducer using `persistReducer` function from redux-persist. the function returns a new reducer that automatically persists the Redux state
+ * `const persistedReducer = persistReducer(persistConfig, rootReducer);`
+
+#### Step 4 := store creation using persisted reducer and middleware to allow non sterializable datas store in redux store so we can avoid any errors and warnings of redux toolkit
+ ```
+  export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
+});
+ ```
+ * middleware := key allows you to customize the middleware applied to the Redux store
+ * middleware is a function that takes getDefaultMiddleware as a parameter.
+ * getDefaultMiddleware() returns an array of middleware provided by Redux Toolkit
+ * { serializableCheck: false } is passed to getDefaultMiddleware(), which disables Redux Toolkit's built-in serializable state checking
+ * setting serializableCheck to false, it allows non-serializable data to be stored in the Redux store without triggering warning messages during development.
+
+#### Step 5 := create a persistor object using persistStore function from  redux-persist responsible for persisting and rehydrating the Redux store with the saved state data from the storage.
+ * `export const persistor = persistStore(store);`
+
+#### Step 6 := Finally wrap the whole component with persistGate from redux persist  and provide the persistor to it. PersistGate component delays rendering until the persisted state has been retrieved and saved to the Redux store.
+ ```
+ import { persistor} from 'store we configured above'
+ import { PersistGate } from 'redux-persist/integration/react'
+
+  <PersistGate persistor={persistor}>
+    {/* Provide a store to react */}
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </PersistGate>
+
+ ```
