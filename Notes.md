@@ -248,7 +248,8 @@ const {loading, user, error} = useSelector(state=>state.persistedReducer.user)
             profilePicture: result.user.PhotoUrl
            })
          })
-     ```
+       ```
+    * #### Step 6 := depending on the result from the backend navigate to the home page   
 * ## Step 3 := build the backend routes
   * ### create a route and write the request handler inside the controller file
     * #### check if the email exist in the database
@@ -262,4 +263,13 @@ const {loading, user, error} = useSelector(state=>state.persistedReducer.user)
     * #### generate a token and send the userData except the password to the frontend
     
 
+
+## To update the header component if the user logged in we show user's profile if not we display "sign in" button. 
+ ### if there is a user data in the redux store user state that means the user is logged in so we show the profile picture. if the user state is null means no one is logged in we show a sign in button
+ ### we use flowbite react for the UI
+  * `<Avatar/>` for the profile picture
+  * `<DropDown/>` to build drop down menu below the profile with options to navigate to profile page or sign out
+   * `<DropDown.Header/>`
+   * `<DropDown.Item>`
+   * `<DropDown.Divider>`
 
