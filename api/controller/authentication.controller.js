@@ -49,7 +49,7 @@ export const signIn = async (req, res, next) => {
 
     //  we filter out the password from the other user data
     const { password: pass, ...rest } = validUser._doc;
-    
+
     // set the token on cookies and send the user data other than the  password to the client side
     res
       .status(200)
@@ -57,5 +57,54 @@ export const signIn = async (req, res, next) => {
       .json(rest);
   } catch (error) {
     next(error);
+  }
+};
+
+export const google = async (req, res, next) => {
+  const { email, name, profilePicture } = req.body;
+  try {
+    const UserExist = await User.findOne({ email })
+
+    // if the user email exists then it pass through a sign in process if not we register the user
+    if (UserExist) {
+      const { password, ...rest } = UserExist
+      const token = jwt.sign({ id: rest._id }, process.env.JWT_SECRET_KEY);
+      res
+        .status(200)
+        .cookie("access_token", token, { httpOnly: true })
+        .json(rest);
+    } else {
+      // we register the user since the user doesn't exist in our DB
+      console.log("first")
+      // generate username using the display name
+      const username = `${name.toLowerCase().split(" ").join("")}${Math.random()
+        .toString(36)
+        .slice(-4)}`;
+
+      // generate password
+      const generatedPassword =
+        Math.random().toString(36).slice(-8) +
+        Math.random().toString(36).slice(-8);
+      // hash the password
+      const passwordHashed = await bcrypt.hash(generatedPassword, 10);
+
+      // save  the new user with all its information including the hashed password
+      const newUser = new User({
+        username,
+        email,
+        password: passwordHashed,
+        profilePicture,
+      });
+
+      await newUser.save();
+      console.log(newUser)
+
+      const token  = jwt.sign({id: newUser._id}, process.env.JWT_SECRET_KEY)
+
+      const {password, ...rest} = newUser._doc
+      res.status(201).cookie("access_token", token, {httpOnly : true}).json(rest)
+    }
+  } catch (error) {
+    next(error)
   }
 };

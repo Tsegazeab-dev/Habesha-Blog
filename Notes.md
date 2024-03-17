@@ -212,3 +212,54 @@ const {loading, user, error} = useSelector(state=>state.persistedReducer.user)
   </PersistGate>
 
  ```
+
+
+# Sign in with Google
+ * ## Step 1 := Set up Firebase
+   * ###  create project on Firebase console 
+   * ###  add app and generate config file for web
+   * ### install firebase in the frontend
+   * ### copy the firebase config and use it in a file firebase.js and export the        initialized app
+   * ### Back to the firebase console and enable authentication with Google
+
+ * ## Step 2 := Build the frontend functionality
+   * ### create a button and when it is clicked write response function for the event
+     * #### Step 1 := create a new instance of the GoogleAuthProvider class, which is provided by Firebase. This provider allows users to sign in using their Google accounts
+       * `import {GoogleAuthProvider} from 'firebase/auth'`
+       * ` const provider = new GoogleAuthProvider()`
+     * #### Step 2 := set the prompt parameter  to "select_account", which means that when the user is prompted to sign in with Google, they will always be prompted to select an account, even if they are already signed in with Google.
+       * `provider.setCustomParameters({ prompt: "select_account" })`
+     * #### Step 3 := initializes authentication using a provided Firebase app instance.
+       * `import {getAuth} from 'firebase/auth'`
+       * `const auth = getAuth(app)`
+       * app is the instance created by using our firebase configuration in firebase.js
+     * #### Step 4 := initiate the sign-in process using a popup window with the Google authentication provider
+       * `const result = await signInWithPopup(auth, provider)`
+       * we find the user information in `result.user`
+     * #### Step 5 := send a post request using the user information as a body
+        ```
+         fetch('/api/auth/google', {
+           method : "Post",
+           headers:{'Content-Type': 'application/json'}
+           body : JSON.stringfy(
+           {
+            username: result.user.displayname
+            email: result.user.email
+            profilePicture: result.user.PhotoUrl
+           })
+         })
+     ```
+* ## Step 3 := build the backend routes
+  * ### create a route and write the request handler inside the controller file
+    * #### check if the email exist in the database
+    * #### if it exists generate a token and send the user data retrieved from the DB except the password to the frontend
+    * #### if the email not exist in the DB
+    * #### generate a unique username by adding some random characters to the username
+      * `const username  = username + Math.random().toString(36).slice(-4)`
+    * #### generate a password since the user is signed up using Google Auth and inserting password is a required in the database schema
+      * `const generatedPassword  = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8)`
+    * #### hash the password using bcrypt and save the whole user data in the DB
+    * #### generate a token and send the userData except the password to the frontend
+    
+
+
