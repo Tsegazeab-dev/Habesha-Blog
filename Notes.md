@@ -273,3 +273,36 @@ const {loading, user, error} = useSelector(state=>state.persistedReducer.user)
    * `<DropDown.Item>`
    * `<DropDown.Divider>`
 
+# Change Theme functionality Dark to light light to dark
+ ## Functionality := when the button is clicked the state changes and depends on the state change the background color will be changed
+  ### create a slice with an initial state of theme state "dark" and reducer called toggleTheme which changes if the theme was dark to light and viceversal when it is dispatched.
+  ### the toggleTheme reducer function is dispatched when the button in the header component clicked.
+  ### we need a provider component that wrap the whole component and give styles based on the state theme.
+  ### we show the button icons in the header component conditionally if it is dark a sun and if it light a moon
+
+ ## Remark := we don't have to return value or use an arrow function with out curly braces inside reducer function of redux toolkit.
+
+ ## Remark:= by default the class name `dark:bg-gray-800` checks the os theme mode if it is dark the propery will be applied. so by default `dark` represent the os mode. but if we want to change the theme mode using class name `dark` we must add `darkMode: "class"` to the tailwind.config. then when we give a class name `dark` the property `dark:bg-gray-800` will be applied.
+
+ ## If we want our application take the system prefence mode when it run for the first time and we want to change it using the buttons whenever we want
+  ### step 1 := we must check the system preference mode first
+   * `window.matchMedia("(prefers-color-scheme: dark)").matches` this line checks if the system preference is set to dark or not. if it is dark it will be true and if not it will be false.
+   * so based on the result we can change the redux state by dispatching a reducer that set the passed argument as theme state value.
+   ```
+    useEffect(()=>{
+      if(window.matchMedia("(prefers-color-scheme: dark)").matches){
+        dispatch(setSystemTheme("dark"))
+      }
+      else{
+        dispatch(setSystemTheme("light"))
+      }
+    },[])
+   ```
+   * we write action in the slice reducer
+   ```
+    reducers:{
+      setSystemTheme : (state, action)=>{
+        state.theme = action.payload
+      }
+    }
+   ```

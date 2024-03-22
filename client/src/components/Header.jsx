@@ -1,15 +1,23 @@
 import {Link, useLocation} from 'react-router-dom'
 import { Avatar, Button, Dropdown, Navbar, TextInput} from "flowbite-react"
 import {AiOutlineSearch} from "react-icons/ai";
-import { FaMoon } from "react-icons/fa";
-import {useSelector} from 'react-redux'
+import { FaMoon, FaSun } from "react-icons/fa";
+import {useDispatch, useSelector} from 'react-redux'
+import { toggleTheme } from '../utils/redux/theme/themeSlice';
 
 function Header() {
     const path = useLocation().pathname
-    // console.log(useSelector((state) => state.persistedReducer.user)); 
+    console.log(useSelector((state) => state.persistedReducer.user)); 
 
     // destracturing userData redux state from the user slice
     const { userData } = useSelector((state) => state.persistedReducer.user);
+
+    // destructuring theme state to render the theme icons conditionally
+    const { theme } = useSelector((state) => state.persistedReducer.theme);
+    // console.log(useSelector((state) => state.persistedReducer.theme));
+
+    // for the theme functionality we need to dispatch reducers to change the state
+    const dispatch = useDispatch()
     
   return (
     <Navbar className="border-b-2">
@@ -39,8 +47,13 @@ function Header() {
       </Button>
       {/* Dark and light mode && signIn buttons */}
       <div className="flex gap-2 md:order-2">
-        <Button color="gray" className="w-12 h-10 hidden sm:inline" pill>
-          <FaMoon />
+        <Button
+          color="gray"
+          className="w-12 h-10 hidden sm:inline"
+          pill
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === "dark" ? <FaSun /> : <FaMoon />}
         </Button>
         {/* if the user exist we build a dropdown profile picture with some menus */}
         {userData ? (

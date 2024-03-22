@@ -73,6 +73,7 @@ export const google = async (req, res, next) => {
         .status(200)
         .cookie("access_token", token, { httpOnly: true })
         .json(rest);
+        // we use http only cookie to store the token. it is a safe way to store data in the browser and tell the browser to protect the data in the cookie from accessing using javascript or xss vulnerablities
     } else {
       // we register the user since the user doesn't exist in our DB
       console.log("first")
