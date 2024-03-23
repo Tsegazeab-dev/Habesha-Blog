@@ -310,3 +310,18 @@ const {loading, user, error} = useSelector(state=>state.persistedReducer.user)
 # Build a Private Routes
  ## Step 1 := create a component that wraps all private routes
  ## step 2 := the component checks the authentication if the user is logged in it renders the child component and if not it will redirect to the sign in page
+
+
+## Tips := URLSearchParams is an interface provided by the JavaScript URL API for working with the query string of a URL. It allows you to manipulate query parameters easily.
+ ### By using useLocation() hook that can help us to get the current page url and query parameters and use the result in URLSearchParams object we can use and manipulate the query string.
+ ```
+  import {useLocation} from 'react-router-dom'
+
+  const location = useLocation()
+
+  const query = new URLSearchParams(location.search)
+
+  <!-- location.search gives us the query string or the url string beside the main path -->
+
+  query.get("key") => we can access the value of the query and we can use it to decide what content should be rendered in the page
+ ```

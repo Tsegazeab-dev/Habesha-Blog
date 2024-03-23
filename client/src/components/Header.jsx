@@ -7,7 +7,7 @@ import { toggleTheme } from '../utils/redux/theme/themeSlice';
 
 function Header() {
     const path = useLocation().pathname
-    console.log(useSelector((state) => state.persistedReducer.user)); 
+    // console.log(useSelector((state) => state.persistedReducer.user)); 
 
     // destracturing userData redux state from the user slice
     const { userData } = useSelector((state) => state.persistedReducer.user);
