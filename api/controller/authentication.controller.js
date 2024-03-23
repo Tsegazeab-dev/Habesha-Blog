@@ -44,7 +44,7 @@ export const signIn = async (req, res, next) => {
     // Tip := It is not a good practice to tell the user where he made a mistake during sign in. we should put general error message like "Invalid credential"
 
     // if both email and password passed we will generate a token
-    // if we ignore expiresIn key as we did above the token will expires when the window closed
+    // if we ignore expiresIn key as we did above the token will expires when the browser closed
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET_KEY);
 
     //  we filter out the password from the other user data
@@ -61,7 +61,8 @@ export const signIn = async (req, res, next) => {
 };
 
 export const google = async (req, res, next) => {
-  const { email, name, profilePicture } = req.body;
+  const { email, name, googlePhoto } = req.body;
+  console.log(googlePhoto)
   try {
     const UserExist = await User.findOne({ email })
 
@@ -76,7 +77,7 @@ export const google = async (req, res, next) => {
         // we use http only cookie to store the token. it is a safe way to store data in the browser and tell the browser to protect the data in the cookie from accessing using javascript or xss vulnerablities
     } else {
       // we register the user since the user doesn't exist in our DB
-      console.log("first")
+      
       // generate username using the display name
       const username = `${name.toLowerCase().split(" ").join("")}${Math.random()
         .toString(36)
@@ -94,7 +95,7 @@ export const google = async (req, res, next) => {
         username,
         email,
         password: passwordHashed,
-        profilePicture,
+        profilePicture: googlePhoto
       });
 
       await newUser.save();

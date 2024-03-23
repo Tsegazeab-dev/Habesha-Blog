@@ -18,10 +18,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    ProfilePicture: {
+    profilePicture: {
       type: String,
       default:
-        "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png",
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
     },
   },
   { timestamps: true }

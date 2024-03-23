@@ -19,13 +19,14 @@ export default function GoogleAuth() {
         try {
             // sign in with the google account
             const result = await signInWithPopup(auth, provider);
+            console.log(result.user.photoURL)
            const res = await fetch("/api/auth/google", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
                     name: result.user.displayName,
                     email : result.user.email,
-                    profilePicture : result.user.photoURL
+                    googlePhoto : result.user.photoURL
                 })
             })
             console.log(res)

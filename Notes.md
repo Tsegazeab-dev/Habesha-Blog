@@ -306,3 +306,7 @@ const {loading, user, error} = useSelector(state=>state.persistedReducer.user)
       }
     }
    ```
+
+# Build a Private Routes
+ ## Step 1 := create a component that wraps all private routes
+ ## step 2 := the component checks the authentication if the user is logged in it renders the child component and if not it will redirect to the sign in page

@@ -1,8 +1,7 @@
-
+import { useLocation } from "react-router-dom";
 function Dashboard() {
-  return (
-    <div>Dashboard</div>
-  )
+  console.log(useLocation());
+  return <div>Dashboard</div>;
 }
 
-export default Dashboard
+export default Dashboard;
