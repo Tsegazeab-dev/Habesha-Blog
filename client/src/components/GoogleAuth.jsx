@@ -19,7 +19,6 @@ export default function GoogleAuth() {
         try {
             // sign in with the google account
             const result = await signInWithPopup(auth, provider);
-            console.log(result.user.photoURL)
            const res = await fetch("/api/auth/google", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -29,9 +28,8 @@ export default function GoogleAuth() {
                     googlePhoto : result.user.photoURL
                 })
             })
-            console.log(res)
             const data = await res.json()
-            console.log(data)
+            
             if(res.ok){
                 dispatch(signInSuccess(data))
                 navigate("/")

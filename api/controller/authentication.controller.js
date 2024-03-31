@@ -62,13 +62,13 @@ export const signIn = async (req, res, next) => {
 
 export const google = async (req, res, next) => {
   const { email, name, googlePhoto } = req.body;
-  console.log(googlePhoto)
   try {
     const UserExist = await User.findOne({ email })
 
     // if the user email exists then it pass through a sign in process if not we register the user
     if (UserExist) {
-      const { password, ...rest } = UserExist
+      const { password, ...rest } = UserExist._doc
+      
       const token = jwt.sign({ id: rest._id }, process.env.JWT_SECRET_KEY);
       res
         .status(200)

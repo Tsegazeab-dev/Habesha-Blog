@@ -14,21 +14,22 @@ export default function DashboardSideBar() {
 
     },[location.search])
   return (
-    <Sidebar className='w-full'>
+    <Sidebar className="w-full">
       <Sidebar.Items>
-        <SidebarItemGroup className='flex flex-col gap-1'>
+        <SidebarItemGroup className="flex flex-col gap-1">
           <Link to="/dashboard?tab=profile">
             <SidebarItem
               icon={HiUser}
               label="user"
               labelColor="dark"
               active={tab === "profile"}
+              as="div"
             >
               Profile
             </SidebarItem>
           </Link>
 
-          <SidebarItem icon={HiArrowSmRight} className='cursor-pointer'>
+          <SidebarItem icon={HiArrowSmRight} className="cursor-pointer">
             Sign Out
           </SidebarItem>
         </SidebarItemGroup>

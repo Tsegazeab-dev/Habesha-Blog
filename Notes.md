@@ -325,3 +325,79 @@ const {loading, user, error} = useSelector(state=>state.persistedReducer.user)
 
   query.get("key") => we can access the value of the query and we can use it to decide what content should be rendered in the page
  ```
+
+
+## Image upload functionality
+### Step 1 := prepare file type input that accepts images so onchange  event can be triggered when user selects an image so we can save the choosen file in a state.
+```
+ <input type:"file" accept="image/*" onChange={handleFileChange} />
+
+// prepare state to store the choosen file
+const [selectedFile, setSelectedFile] = useState(null)
+
+ const handleFileChange = (e)=>{
+  setSelectedFile(e.target.files[0])
+ }
+```
+### TIP := we can generate a link using the selected file but it only works on our machine. to get a link that works for every machine and save it to the database we can use firebase storage.
+ `const imageLink = URL.createObjectURL(e.target.files[0])`
+
+### Step 2 := Go to firebase console and use storage  bucket for images. we rewrite rules for the images only to upload less than 2MB and only accept images.
+```
+ rules_version = '2';
+
+ // Craft rules based on data in your Firestore database
+ // allow write: if firestore.get(
+ //    /databases/(default)/documents/users/$(request.auth.uid)).data.isAdmin;
+ service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read;
+      allow write: if
+      request.resource.size < 2 * 1024 * 1024 &&
+      request.resource.contentType.matches('image/.*') 
+    }
+  }
+ }
+```
+### Step 3 := write uploadImage function that uploads the user chosen image to the firebase storage. tracks the uploading progress, if there is an uploading error, and also get downloadUrl to save it to the db.
+```
+<!-- the uploadImage function invoked iff the user choose some image to change -->
+    const uploadImage = async ()=>{
+
+      // Get Storage Reference: This retrieves a reference to the Cloud Storage service.
+      `const storage = getStorage(app);`
+
+      //Generate Unique Filename: This generates a unique filename based on the current timestamp concatenated with the original filename.
+      `const fileName = new Date().getTime() + imageFile.name;`
+
+      // Create Storage Reference: This creates a reference to the location in the Cloud Storage where the file will be stored.
+      `const storageRef = ref(storage, fileName);`
+
+      // Upload File: This initiates the upload of the file to the Cloud Storage. uploadBytesResumable is a method that starts uploading the file data specified by imageFile to the location specified by storageRef.
+      `const uploadTask = uploadBytesResumable(storageRef, imageFile);`
+
+      // Track Upload Progress: This sets up an event listener to track the upload progress. Whenever the state of the upload changes, this function calculates the progress as a percentage and updates the upload progress.
+      `uploadTask.on('state_changed', (snapshot) => {
+         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+         setImageUploadProgress(progress.toFixed(0));
+       }),`
+
+       // Handle Upload Error: If an error occurs during the upload process, this function is called to set an error message indicating that the file must be an image and less than 2MB.
+       `(error) => {
+            setImageFileUploadError("File must be an image and less than 2MB");
+         },`
+
+      // Upload Completion: Once the upload is completed successfully, this function retrieves the download URL of the uploaded file using getDownloadURL and sets it as the image file URL.
+       `() => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setImageFileUrl(downloadURL);
+          });
+         }`
+    }
+```
+#### Step 4 := show the progress or the error in the user interface and also save url of the image to the databse  by updating the previous profile picture.
+ * for the progress bar we use  `npm i react-circular-progressbar`
+
+## Update user data
+### Prepare the update API route
