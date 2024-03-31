@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import cookieParser from "cookie-parser"
 import userRoutes from './routes/user.routes.js'
 import authRoutes from './routes/auth.routes.js'
 dotenv.config();
@@ -9,7 +10,8 @@ const app = express()
 
 // to parse json data coming from the client
 app.use(express.json())
-
+// to parse the cookie from the browser
+app.use(cookieParser());
 // connect the mongodb atlas database using url
 mongoose.connect(
   process.env.MONGODB
