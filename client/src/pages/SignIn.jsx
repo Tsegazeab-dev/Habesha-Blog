@@ -1,6 +1,6 @@
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signInFailure, signInStart, signInSuccess } from "../utils/redux/user/userSlice";
 import GoogleAuth from "../components/GoogleAuth";
@@ -8,6 +8,7 @@ import GoogleAuth from "../components/GoogleAuth";
 function SignIn() {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
+  const navigationStatus = useLocation()
 
   // initialize useDispatch  hook to dispatch actions in the Redux store
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function SignIn() {
         return;
       }
       dispatch(signInSuccess(data))
-      navigate('/')
+      navigate(`${navigationStatus?.state?.redirect || '/'}`)
     } catch (error) {
       dispatch(signInFailure(error.message))
     }
@@ -70,6 +71,9 @@ function SignIn() {
         </div>
         {/* right side */}
         <div className="flex-1">
+          {navigationStatus?.state?.msg && (
+            <Alert color="failure" className="mb-4">{navigationStatus.state.msg}</Alert>
+          )}
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
             <div>
               <Label value="your email" htmlFor="email" />
@@ -89,11 +93,7 @@ function SignIn() {
                 onChange={handleChange}
               />
             </div>
-            <Button
-              type="submit"
-              gradientDuoTone="tealToLime"
-              disabled={false}
-            >
+            <Button type="submit" gradientDuoTone="tealToLime" disabled={false}>
               {loading ? (
                 <>
                   <Spinner size="sm" />
@@ -103,7 +103,7 @@ function SignIn() {
                 "Sign In"
               )}
             </Button>
-            <GoogleAuth/>
+            <GoogleAuth />
           </form>
           <div className="flex gap-2 mt-5">
             <p>Don&apos;t have an account?</p>

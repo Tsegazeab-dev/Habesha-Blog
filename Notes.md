@@ -401,3 +401,24 @@ const [selectedFile, setSelectedFile] = useState(null)
 
 ## Update user data
 ### Prepare the update API route
+ * step 1 := verify the token from cookie using a middleware function
+   * to verify the token we must parse it from the browser cookie and for this we need a package called cookie-parser
+     *  `npm i cookie-parser` := install the package
+     *  `app.use(cookieParser)` := use it as a middleware in app.js to parse the cookie
+     *  `req.cookies.access_token` := we can get the token using the key name "access_token"
+     *  then verify the token using JWT, if it succeeds pass to the main controller to update the data if not return 401 status unauthorized user 
+ * step 2 := in the main controller check the id in the token is similar to the id in the route params.
+   * `req.params.id` := to get the id attached in the route when sending the update request
+   * `req.user.id` := in the middleware when we verify the token if it succeeds we set the id in the token to req.user
+   * so we can compare the id of the user who sends the update request to the id signed in the token if it maches we are good to go.
+ *  step 3 := check the new updated data meet the conditions before insert the data to the db. ex:= password length, username
+
+
+solve the  issue that comes by updating profile before uploading finishes
+
+success message for a successfull update
+
+Error message for errors during updating
+ - if someone try to update with no change
+ - and for errors comes from backend
+
